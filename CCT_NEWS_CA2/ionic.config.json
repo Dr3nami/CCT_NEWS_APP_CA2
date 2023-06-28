@@ -1,0 +1,7 @@
+{
+  "name": "CCT_NEWS_CA2",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
