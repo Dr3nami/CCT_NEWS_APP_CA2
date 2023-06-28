@@ -1,6 +1,14 @@
 import { Component } from '@angular/core';
 import { NewsArticlesService } from '../api/news-articles.service';
 
+interface ApiReponse {
+  articles: Article[];
+}
+
+interface Article {
+  
+}
+
 
 @Component({
   selector: 'app-home',
@@ -9,18 +17,18 @@ import { NewsArticlesService } from '../api/news-articles.service';
 })
 export class HomePage {
 selectedCategory ='health'
-topHeadlines = {}
+topHeadlines: Article[] = [];
 
 
   constructor(private articleService:NewsArticlesService) {
-    articleService.getTopHeadline().subscribe((results) =>{
+    articleService.getTopHeadline().subscribe((results: ApiReponse ) =>{
       
-      this.topHeadlines = results.articles
+      this.topHeadlines.push(...results.articles)
       console.log(this.topHeadlines);
       
     })
 
-    articleService.getArticlesByCategory(this.selectedCategory).subscribe((results) =>{
+    articleService.getArticlesByCategory(this.selectedCategory).subscribe((results: ApiReponse) =>{
       console.log((results));
       
     })
