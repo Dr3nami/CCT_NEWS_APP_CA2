@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { NewsArticlesService } from '../api/news-articles.service';
+import { Router } from '@angular/router';
+import { NavigationExtras } from '@angular/router';
 
 interface ApiReponse {
   articles: Article[];
@@ -20,7 +22,7 @@ selectedCategory ='health'
 topHeadlines: Article[] = [];
 
 
-  constructor(private articleService:NewsArticlesService) {
+  constructor(private articleService:NewsArticlesService, private router:Router) {
     articleService.getTopHeadline().subscribe((results: ApiReponse ) =>{
       
       this.topHeadlines.push(...results.articles)
@@ -33,5 +35,21 @@ topHeadlines: Article[] = [];
       
     })
   }
+getDetails(selectedArticle: any){
+const params :NavigationExtras = {
+  queryParams:{
+    'author': selectedArticle.author,
+    'content': selectedArticle.content,
+    'description': selectedArticle.description,
+    'publishedAt': selectedArticle.publishedAt,
+    'source': selectedArticle.source.name,
+    'title': selectedArticle.title,
+    'url': selectedArticle.url,
+    'urlToImage': selectedArticle.urlToImage,
+  }
+}
+this.router.navigate(['/details'],params)
+
+}
 
 }

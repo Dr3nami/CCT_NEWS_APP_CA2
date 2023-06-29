@@ -13,13 +13,13 @@ export class NewsArticlesService {
 
 getTopHeadline():Observable<any>{
   return this.httpClient.get(
-    `${environment.url_base}top-headlines?country=ie&apiKey=${environment.api_key}`
+    `${environment.url_base}top-headlines?country=us&apiKey=${environment.api_key}`
   )
 }
 
 getArticlesByCategory(category: string):Observable<any>{
   return this.httpClient.get(
-    `${environment.url_base}top-headlines?country=ie&${category}=sport&apiKey=${environment.api_key}`
+    `${environment.url_base}top-headlines?country=us&${category}=sport&apiKey=${environment.api_key}`
   )
 }
 }
