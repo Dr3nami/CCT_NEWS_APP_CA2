@@ -4,6 +4,23 @@
       CCT NEWS
     </ion-title>
   </ion-toolbar>
+  <ion-tabs>
+    <ion-tab-bar slot="top">
+      <ion-tab-button tab="Sports">
+        Sports
+      </ion-tab-button>
+      <ion-tab-button tab="Business">
+        Business
+      </ion-tab-button>
+      <ion-tab-button tab="Travel">
+        Travel
+      </ion-tab-button>
+      <ion-tab-button tab="search">
+        <ion-icon name="search"></ion-icon>
+        Search
+      </ion-tab-button>
+    </ion-tab-bar>
+  </ion-tabs>
 </ion-header>
 
 <ion-content [fullscreen]="true">
@@ -19,15 +36,15 @@
 
   <ng-template #articleTemplate let-article>
     <ion-list>
-      <ion-row style="background-color: rgba(128, 128, 128, 0.482) ; border-radius: 16px;" class="ion-margin">
+      <ion-row style="background-color: rgba(214, 217, 246, 0.482) ; border-radius: 20px;" class="ion-margin">
         <ion-col size="4">
-          <img style="width:300px; height: 100px; object-fit: cover; border-radius: 5px;" src="{{article.urlToImage}}" />
+          <img style="width:300px; height: 100px; object-fit: cover; border-radius: 10px;" src="{{article.urlToImage}}" />
         </ion-col>
         <ion-col size="8" (click)="getDetails(article)">
           <ion-label>
-            {{ article.author }}
-            <p>{{article.publishedAt | date}}</p>
-            <p style="font-weight: 200;">{{article.title}}</p>
+            <p style="color: white;">{{ article.author }}</p>
+            <p style="color: white;">{{ article.publishedAt | date }}</p>
+            <p style="color: white; font-weight: 200;">{{ article.title }}</p>
           </ion-label>
         </ion-col>
       </ion-row>
